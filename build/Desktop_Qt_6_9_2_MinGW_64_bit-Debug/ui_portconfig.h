@@ -63,6 +63,8 @@ public:
         if (portconfig->objectName().isEmpty())
             portconfig->setObjectName("portconfig");
         portconfig->resize(522, 304);
+        portconfig->setMaximumSize(QSize(522, 304));
+        portconfig->setSizeGripEnabled(true);
         verticalLayout_5 = new QVBoxLayout(portconfig);
         verticalLayout_5->setObjectName("verticalLayout_5");
         verticalLayout_5->setSizeConstraint(QLayout::SizeConstraint::SetMinAndMaxSize);

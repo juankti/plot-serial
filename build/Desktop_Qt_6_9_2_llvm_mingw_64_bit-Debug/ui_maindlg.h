@@ -13,11 +13,10 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QListWidget>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
 #include "qcustomplot.h"
 
 QT_BEGIN_NAMESPACE
@@ -25,62 +24,66 @@ QT_BEGIN_NAMESPACE
 class Ui_maindlg
 {
 public:
-    QWidget *widget;
     QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_3;
+    QVBoxLayout *verticalLayout_2;
+    QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *btnPorts;
+    QSpacerItem *horizontalSpacer_2;
+    QLabel *labOpenPort;
     QCustomPlot *grafica;
     QHBoxLayout *horizontalLayout;
-    QSpacerItem *verticalSpacer;
-    QPushButton *pushButton;
-    QWidget *widget1;
-    QVBoxLayout *verticalLayout_2;
-    QPushButton *btnPorts;
-    QListWidget *portsList;
 
     void setupUi(QDialog *maindlg)
     {
         if (maindlg->objectName().isEmpty())
             maindlg->setObjectName("maindlg");
-        maindlg->resize(671, 360);
-        widget = new QWidget(maindlg);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(250, 10, 411, 341));
-        verticalLayout = new QVBoxLayout(widget);
+        maindlg->resize(773, 327);
+        verticalLayout = new QVBoxLayout(maindlg);
         verticalLayout->setObjectName("verticalLayout");
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        grafica = new QCustomPlot(widget);
-        grafica->setObjectName("grafica");
-        grafica->setMaximumSize(QSize(401, 251));
-        horizontalLayout = new QHBoxLayout(grafica);
-        horizontalLayout->setObjectName("horizontalLayout");
-
-        verticalLayout->addWidget(grafica);
-
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
-
-        verticalLayout->addItem(verticalSpacer);
-
-        pushButton = new QPushButton(widget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setMaximumSize(QSize(99, 32));
-
-        verticalLayout->addWidget(pushButton);
-
-        widget1 = new QWidget(maindlg);
-        widget1->setObjectName("widget1");
-        widget1->setGeometry(QRect(40, 20, 171, 121));
-        verticalLayout_2 = new QVBoxLayout(widget1);
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName("horizontalLayout_3");
+        verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName("verticalLayout_2");
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        btnPorts = new QPushButton(widget1);
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
+
+        btnPorts = new QPushButton(maindlg);
         btnPorts->setObjectName("btnPorts");
         btnPorts->setAutoFillBackground(true);
 
-        verticalLayout_2->addWidget(btnPorts);
+        horizontalLayout_2->addWidget(btnPorts);
 
-        portsList = new QListWidget(widget1);
-        portsList->setObjectName("portsList");
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        verticalLayout_2->addWidget(portsList);
+        horizontalLayout_2->addItem(horizontalSpacer_2);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
+
+        labOpenPort = new QLabel(maindlg);
+        labOpenPort->setObjectName("labOpenPort");
+        labOpenPort->setMinimumSize(QSize(226, 111));
+
+        verticalLayout_2->addWidget(labOpenPort);
+
+
+        horizontalLayout_3->addLayout(verticalLayout_2);
+
+        grafica = new QCustomPlot(maindlg);
+        grafica->setObjectName("grafica");
+        grafica->setMinimumSize(QSize(511, 301));
+        horizontalLayout = new QHBoxLayout(grafica);
+        horizontalLayout->setObjectName("horizontalLayout");
+
+        horizontalLayout_3->addWidget(grafica);
+
+
+        verticalLayout->addLayout(horizontalLayout_3);
 
 
         retranslateUi(maindlg);
@@ -91,9 +94,8 @@ public:
     void retranslateUi(QDialog *maindlg)
     {
         maindlg->setWindowTitle(QCoreApplication::translate("maindlg", "maindlg", nullptr));
-        pushButton->setText(QCoreApplication::translate("maindlg", "PushButton", nullptr));
-        btnPorts->setText(QCoreApplication::translate("maindlg", "Search for \n"
-"available ports", nullptr));
+        btnPorts->setText(QCoreApplication::translate("maindlg", "Configure ports", nullptr));
+        labOpenPort->setText(QString());
     } // retranslateUi
 
 };

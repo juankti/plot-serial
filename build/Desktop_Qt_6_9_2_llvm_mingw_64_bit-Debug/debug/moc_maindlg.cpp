@@ -41,14 +41,16 @@ template <> constexpr inline auto maindlg::qt_create_metaobjectdata<qt_meta_tag_
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "maindlg",
-        "on_pushButton_clicked",
+        "handleData",
         "",
         "on_btnPorts_clicked"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'on_pushButton_clicked'
-        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'handleData'
+        QtMocHelpers::SlotData<void(const QByteArray &)>(1, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QByteArray, 2 },
+        }}),
         // Slot 'on_btnPorts_clicked'
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
     };
@@ -74,12 +76,11 @@ void maindlg::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
     auto *_t = static_cast<maindlg *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->on_pushButton_clicked(); break;
+        case 0: _t->handleData((*reinterpret_cast< std::add_pointer_t<QByteArray>>(_a[1]))); break;
         case 1: _t->on_btnPorts_clicked(); break;
         default: ;
         }
     }
-    (void)_a;
 }
 
 const QMetaObject *maindlg::metaObject() const
