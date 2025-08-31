@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    graphoptions.cpp \
     main.cpp \
     maindlg.cpp \
     portconfig.cpp \
@@ -16,12 +17,14 @@ SOURCES += \
     serialcom.cpp
 
 HEADERS += \
+    graphoptions.h \
     maindlg.h \
     portconfig.h \
     qcustomplot.h \
     serialcom.h
 
 FORMS += \
+    graphoptions.ui \
     maindlg.ui \
     portconfig.ui
 

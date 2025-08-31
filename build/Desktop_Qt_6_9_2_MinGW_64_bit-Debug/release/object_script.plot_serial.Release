@@ -1,0 +1,11 @@
+release/graphoptions.o
+release/main.o
+release/maindlg.o
+release/portconfig.o
+release/qcustomplot.o
+release/serialcom.o
+release/moc_graphoptions.o
+release/moc_maindlg.o
+release/moc_portconfig.o
+release/moc_qcustomplot.o
+release/moc_serialcom.o

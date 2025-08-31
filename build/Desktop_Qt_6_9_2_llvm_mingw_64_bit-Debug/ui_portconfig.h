@@ -13,20 +13,22 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_portconfig
 {
 public:
-    QVBoxLayout *verticalLayout_5;
-    QHBoxLayout *horizontalLayout_8;
+    QWidget *widget;
+    QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
@@ -62,15 +64,16 @@ public:
     {
         if (portconfig->objectName().isEmpty())
             portconfig->setObjectName("portconfig");
-        portconfig->resize(522, 304);
-        portconfig->setMaximumSize(QSize(522, 304));
+        portconfig->resize(469, 294);
+        portconfig->setMinimumSize(QSize(469, 294));
+        portconfig->setMaximumSize(QSize(469, 294));
         portconfig->setSizeGripEnabled(false);
-        verticalLayout_5 = new QVBoxLayout(portconfig);
-        verticalLayout_5->setObjectName("verticalLayout_5");
-        verticalLayout_5->setSizeConstraint(QLayout::SizeConstraint::SetMinAndMaxSize);
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setObjectName("horizontalLayout_8");
-        horizontalLayout_8->setSizeConstraint(QLayout::SizeConstraint::SetMaximumSize);
+        widget = new QWidget(portconfig);
+        widget->setObjectName("widget");
+        widget->setGeometry(QRect(13, 13, 445, 273));
+        gridLayout = new QGridLayout(widget);
+        gridLayout->setObjectName("gridLayout");
+        gridLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName("verticalLayout_2");
         horizontalLayout_2 = new QHBoxLayout();
@@ -79,7 +82,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
-        btnPorts = new QPushButton(portconfig);
+        btnPorts = new QPushButton(widget);
         btnPorts->setObjectName("btnPorts");
         btnPorts->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
         btnPorts->setAutoFillBackground(true);
@@ -93,7 +96,7 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_2);
 
-        portsList = new QListWidget(portconfig);
+        portsList = new QListWidget(widget);
         portsList->setObjectName("portsList");
         portsList->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
         portsList->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
@@ -104,17 +107,17 @@ public:
         verticalLayout_2->addWidget(portsList);
 
 
-        horizontalLayout_8->addLayout(verticalLayout_2);
+        gridLayout->addLayout(verticalLayout_2, 0, 0, 1, 1);
 
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_8->addItem(horizontalSpacer_5);
+        gridLayout->addItem(horizontalSpacer_5, 0, 1, 1, 1);
 
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName("verticalLayout_4");
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName("verticalLayout_3");
-        label_2 = new QLabel(portconfig);
+        label_2 = new QLabel(widget);
         label_2->setObjectName("label_2");
         label_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -124,14 +127,14 @@ public:
         verticalLayout->setObjectName("verticalLayout");
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        label = new QLabel(portconfig);
+        label = new QLabel(widget);
         label->setObjectName("label");
         label->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
         label->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout->addWidget(label);
 
-        comboBaud = new QComboBox(portconfig);
+        comboBaud = new QComboBox(widget);
         comboBaud->setObjectName("comboBaud");
 
         horizontalLayout->addWidget(comboBaud);
@@ -141,13 +144,13 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName("horizontalLayout_3");
-        label_3 = new QLabel(portconfig);
+        label_3 = new QLabel(widget);
         label_3->setObjectName("label_3");
         label_3->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_3->addWidget(label_3);
 
-        comboBaud_2 = new QComboBox(portconfig);
+        comboBaud_2 = new QComboBox(widget);
         comboBaud_2->setObjectName("comboBaud_2");
 
         horizontalLayout_3->addWidget(comboBaud_2);
@@ -157,13 +160,13 @@ public:
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName("horizontalLayout_4");
-        label_4 = new QLabel(portconfig);
+        label_4 = new QLabel(widget);
         label_4->setObjectName("label_4");
         label_4->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_4->addWidget(label_4);
 
-        comboBaud_3 = new QComboBox(portconfig);
+        comboBaud_3 = new QComboBox(widget);
         comboBaud_3->setObjectName("comboBaud_3");
 
         horizontalLayout_4->addWidget(comboBaud_3);
@@ -173,13 +176,13 @@ public:
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName("horizontalLayout_5");
-        label_5 = new QLabel(portconfig);
+        label_5 = new QLabel(widget);
         label_5->setObjectName("label_5");
         label_5->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_5->addWidget(label_5);
 
-        comboBaud_4 = new QComboBox(portconfig);
+        comboBaud_4 = new QComboBox(widget);
         comboBaud_4->setObjectName("comboBaud_4");
 
         horizontalLayout_5->addWidget(comboBaud_4);
@@ -189,13 +192,13 @@ public:
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName("horizontalLayout_6");
-        label_6 = new QLabel(portconfig);
+        label_6 = new QLabel(widget);
         label_6->setObjectName("label_6");
         label_6->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_6->addWidget(label_6);
 
-        comboBaud_5 = new QComboBox(portconfig);
+        comboBaud_5 = new QComboBox(widget);
         comboBaud_5->setObjectName("comboBaud_5");
 
         horizontalLayout_6->addWidget(comboBaud_5);
@@ -215,7 +218,7 @@ public:
 
         horizontalLayout_7->addItem(horizontalSpacer_3);
 
-        pushButton = new QPushButton(portconfig);
+        pushButton = new QPushButton(widget);
         pushButton->setObjectName("pushButton");
 
         horizontalLayout_7->addWidget(pushButton);
@@ -228,10 +231,7 @@ public:
         verticalLayout_4->addLayout(horizontalLayout_7);
 
 
-        horizontalLayout_8->addLayout(verticalLayout_4);
-
-
-        verticalLayout_5->addLayout(horizontalLayout_8);
+        gridLayout->addLayout(verticalLayout_4, 0, 2, 1, 1);
 
 
         retranslateUi(portconfig);

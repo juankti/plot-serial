@@ -5,23 +5,37 @@ maindlg::maindlg(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::maindlg)
 {
-    ui->setupUi(this);;
-    t=0;
+    ui->setupUi(this);
     ui->grafica->addGraph();
-    ui->grafica->xAxis->setLabel("Time (s)");
-    ui->grafica->yAxis->setLabel("Analog Read (0-1023)");
+    ui->grafica->xAxis->setLabel("");
+    ui->grafica->yAxis->setLabel("");
     ui->grafica->xAxis->setRange(0,1);
     ui->grafica->yAxis->setRange(0,1024);
+    ui->grafica->replot();
+    grOpDLG = new graphoptions(this);
+    connect(grOpDLG,&graphoptions::apply,this,&maindlg::plotConfig);
+    t=0;
+    //
+}
+
+QCustomPlot* maindlg::plot() const {return ui->grafica;}
+
+void maindlg::plotConfig(){
+    ui->grafica->xAxis->grid()->setVisible(grOpDLG->grid());
+    ui->grafica->yAxis->grid()->setVisible(grOpDLG->grid());
+    if (!grOpDLG->autoFit()) {
+        ui->grafica->xAxis->setRange(grOpDLG->tMin(),grOpDLG->tMax());
+    }
+    ui->grafica->xAxis->setLabel(grOpDLG->xLab());
+    ui->grafica->yAxis->setLabel(grOpDLG->yLab());
+    ui->grafica->xAxis->setScaleType(grOpDLG->scale());
     ui->grafica->replot();
 }
 
 
-float maindlg::agrega(){
-    return 1;
-}
-
 maindlg::~maindlg()
 {
+    delete grOpDLG;
     delete com;
     delete pconf;
     port.close();
@@ -35,19 +49,16 @@ void maindlg::handleData(const QByteArray& dat){
     data.push_back(t);
     y.push_back(val);
     ui->grafica->graph(0)->setData(this->data, y);
-    if(t>1) ui->grafica->xAxis->setRange(t-1,t+1);
     ui->grafica->replot();
+    if (grOpDLG->autoFit()) ui->grafica->xAxis->setRange(t-grOpDLG->timeWnd/2,t+grOpDLG->timeWnd/2);
     t+=0.1;
 }
-
-
 
 void maindlg::on_btnPorts_clicked()
 {
     pconf=new portconfig(this,&port);
     pconf->exec();
     com = new serialcom(this,&port);
-    connect(com,&serialcom::dataReceived,this,&maindlg::handleData);
     ui->labOpenPort->setText("Opened port: "+port.portName()+"\n \t "+
                                  "Baud rate: "+
                                  QString::number(port.baudRate())+"\n \t "+
@@ -55,5 +66,23 @@ void maindlg::on_btnPorts_clicked()
                                  QString::number(port.dataBits())+"\n \t "+
                                  "Stop bits: "+
                                  QString::number(port.stopBits())+"\n \t ");
+}
+
+
+void maindlg::on_btnGSettings_clicked()
+{
+    grOpDLG->exec();
+}
+
+
+void maindlg::on_btnBegin_clicked()
+{
+    connect(com,&serialcom::dataReceived,this,&maindlg::handleData);
+}
+
+
+void maindlg::on_btnStop_clicked()
+{
+    disconnect(com,&serialcom::dataReceived,this,&maindlg::handleData);
 }
 

@@ -1,0 +1,11 @@
+debug/graphoptions.o
+debug/main.o
+debug/maindlg.o
+debug/portconfig.o
+debug/qcustomplot.o
+debug/serialcom.o
+debug/moc_graphoptions.o
+debug/moc_maindlg.o
+debug/moc_portconfig.o
+debug/moc_qcustomplot.o
+debug/moc_serialcom.o

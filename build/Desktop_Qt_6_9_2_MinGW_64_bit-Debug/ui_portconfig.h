@@ -64,7 +64,7 @@ public:
             portconfig->setObjectName("portconfig");
         portconfig->resize(522, 304);
         portconfig->setMaximumSize(QSize(522, 304));
-        portconfig->setSizeGripEnabled(true);
+        portconfig->setSizeGripEnabled(false);
         verticalLayout_5 = new QVBoxLayout(portconfig);
         verticalLayout_5->setObjectName("verticalLayout_5");
         verticalLayout_5->setSizeConstraint(QLayout::SizeConstraint::SetMinAndMaxSize);
@@ -81,6 +81,7 @@ public:
 
         btnPorts = new QPushButton(portconfig);
         btnPorts->setObjectName("btnPorts");
+        btnPorts->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
         btnPorts->setAutoFillBackground(true);
 
         horizontalLayout_2->addWidget(btnPorts);
@@ -241,8 +242,7 @@ public:
     void retranslateUi(QDialog *portconfig)
     {
         portconfig->setWindowTitle(QCoreApplication::translate("portconfig", "Dialog", nullptr));
-        btnPorts->setText(QCoreApplication::translate("portconfig", "Buscar puertos\n"
-"disponibles", nullptr));
+        btnPorts->setText(QCoreApplication::translate("portconfig", "Search", nullptr));
         label_2->setText(QString());
         label->setText(QCoreApplication::translate("portconfig", "Baud rate:", nullptr));
         label_3->setText(QCoreApplication::translate("portconfig", "Data bits:", nullptr));

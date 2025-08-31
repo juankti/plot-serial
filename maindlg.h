@@ -7,6 +7,7 @@
 #include <QtSerialPort/QSerialPortInfo>
 #include "serialcom.h"
 #include "portconfig.h"
+#include "graphoptions.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,19 +22,25 @@ class maindlg : public QDialog
 public:
     maindlg(QWidget *parent = nullptr);
     ~maindlg();
-    float agrega();
 private slots:
     void handleData(const QByteArray&);
+    void plotConfig();
     void on_btnPorts_clicked();
+    void on_btnGSettings_clicked();
+
+    void on_btnBegin_clicked();
+
+    void on_btnStop_clicked();
 
 private:
     float t;
+    QVector<double> data;
+    QVector<double> y;
+    QCustomPlot*plot() const;
     Ui::maindlg *ui;
-    int interval;
     QSerialPort port;
     portconfig*pconf; // dialog
     serialcom*com;
-    QVector<double> data;
-    QVector<double> y;
-};
+    graphoptions*grOpDLG;
+    };
 #endif // MAINDLG_H
