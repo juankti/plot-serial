@@ -9,18 +9,21 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    device.cpp \
     main.cpp \
     maindlg.cpp \
-    qcustomplot.cpp
+    portconfig.cpp \
+    qcustomplot.cpp \
+    serialcom.cpp
 
 HEADERS += \
-    device.h \
     maindlg.h \
-    qcustomplot.h
+    portconfig.h \
+    qcustomplot.h \
+    serialcom.h
 
 FORMS += \
-    maindlg.ui
+    maindlg.ui \
+    portconfig.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

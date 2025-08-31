@@ -5,7 +5,8 @@
 #include "qcustomplot.h"
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
-#include "device.h"
+#include "serialcom.h"
+#include "portconfig.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,17 +22,17 @@ public:
     maindlg(QWidget *parent = nullptr);
     ~maindlg();
     float agrega();
-    void portSelected(QListWidgetItem *item)    ;
-    void replotting(int);
-
 private slots:
-    void on_pushButton_clicked();
-
+    void handleData(const QByteArray&);
     void on_btnPorts_clicked();
+
 private:
+    float t;
     Ui::maindlg *ui;
-    QList<QSerialPortInfo> devices;
+    int interval;
     QSerialPort port;
+    portconfig*pconf; // dialog
+    serialcom*com;
     QVector<double> data;
     QVector<double> y;
 };
