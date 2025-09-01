@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -43,6 +44,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *btnGSettings;
+    QCheckBox *checkBox;
     QSpacerItem *horizontalSpacer_3;
 
     void setupUi(QDialog *maindlg)
@@ -129,6 +131,11 @@ public:
 
         horizontalLayout_3->addWidget(btnGSettings);
 
+        checkBox = new QCheckBox(maindlg);
+        checkBox->setObjectName("checkBox");
+
+        horizontalLayout_3->addWidget(checkBox);
+
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         horizontalLayout_3->addItem(horizontalSpacer_3);
@@ -157,6 +164,7 @@ public:
         btnBegin->setText(QCoreApplication::translate("maindlg", "Start", nullptr));
         btnStop->setText(QCoreApplication::translate("maindlg", "Stop", nullptr));
         btnGSettings->setText(QCoreApplication::translate("maindlg", "Graph options", nullptr));
+        checkBox->setText(QCoreApplication::translate("maindlg", "Cursors", nullptr));
     } // retranslateUi
 
 };

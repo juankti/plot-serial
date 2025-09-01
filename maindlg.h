@@ -28,18 +28,22 @@ private slots:
     void plotConfig();
     void on_btnPorts_clicked();
     void on_btnGSettings_clicked();
-
+    void setCursors(QMouseEvent*);
+    void eraseCursors();
     void on_btnBegin_clicked();
-
     void on_btnStop_clicked();
+    void on_checkBox_checkStateChanged(const Qt::CheckState &arg1);
 
 private:
+    Ui::maindlg *ui;
+    QMetaObject::Connection cursorConnection;
     float t;
+    int curs=0;
     QVector<double> data;
     QVector<double> y;
     QCustomPlot*plot() const;
-    Ui::maindlg *ui;
     QSerialPort port;
+    QCPItemStraightLine* cursors[2]={nullptr,nullptr};
     portconfig*pconf; // dialog
     serialcom*com;
     graphoptions*grOpDLG;

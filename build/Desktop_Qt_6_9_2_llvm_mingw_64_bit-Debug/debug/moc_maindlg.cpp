@@ -46,8 +46,14 @@ template <> constexpr inline auto maindlg::qt_create_metaobjectdata<qt_meta_tag_
         "plotConfig",
         "on_btnPorts_clicked",
         "on_btnGSettings_clicked",
+        "setCursors",
+        "QMouseEvent*",
+        "eraseCursors",
         "on_btnBegin_clicked",
-        "on_btnStop_clicked"
+        "on_btnStop_clicked",
+        "on_checkBox_checkStateChanged",
+        "Qt::CheckState",
+        "arg1"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -61,10 +67,20 @@ template <> constexpr inline auto maindlg::qt_create_metaobjectdata<qt_meta_tag_
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_btnGSettings_clicked'
         QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'setCursors'
+        QtMocHelpers::SlotData<void(QMouseEvent *)>(6, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 7, 2 },
+        }}),
+        // Slot 'eraseCursors'
+        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_btnBegin_clicked'
-        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_btnStop_clicked'
-        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_checkBox_checkStateChanged'
+        QtMocHelpers::SlotData<void(const Qt::CheckState &)>(11, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 12, 13 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -92,8 +108,11 @@ void maindlg::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 1: _t->plotConfig(); break;
         case 2: _t->on_btnPorts_clicked(); break;
         case 3: _t->on_btnGSettings_clicked(); break;
-        case 4: _t->on_btnBegin_clicked(); break;
-        case 5: _t->on_btnStop_clicked(); break;
+        case 4: _t->setCursors((*reinterpret_cast< std::add_pointer_t<QMouseEvent*>>(_a[1]))); break;
+        case 5: _t->eraseCursors(); break;
+        case 6: _t->on_btnBegin_clicked(); break;
+        case 7: _t->on_btnStop_clicked(); break;
+        case 8: _t->on_checkBox_checkStateChanged((*reinterpret_cast< std::add_pointer_t<Qt::CheckState>>(_a[1]))); break;
         default: ;
         }
     }
@@ -118,14 +137,14 @@ int maindlg::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 9;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 9;
     }
     return _id;
 }

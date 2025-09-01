@@ -16,6 +16,7 @@ maindlg::maindlg(QWidget *parent)
     ui->grafica->replot();
     grOpDLG = new graphoptions(this);
     connect(grOpDLG,&graphoptions::apply,this,&maindlg::plotConfig);
+    connect(ui->grafica, &QCustomPlot::mouseDoubleClick, this, &maindlg::setCursors);
     t=0;
     //
 }
@@ -37,6 +38,7 @@ void maindlg::plotConfig(){
 
 maindlg::~maindlg()
 {
+    for (auto a:cursors) delete a;
     delete grOpDLG;
     delete com;
     delete pconf;
@@ -47,7 +49,6 @@ maindlg::~maindlg()
 void maindlg::handleData(const QByteArray& dat){
     bool ok;
     float val = dat.toFloat(&ok);
-    ui->label->setText(QString::number(timer.interval()));
     if (!ok) return;
     data.push_back(t);
     y.push_back(val);
@@ -72,6 +73,35 @@ void maindlg::on_btnPorts_clicked()
 }
 
 
+void maindlg::setCursors(QMouseEvent*event){
+    if(!ui->checkBox->isChecked()) return;
+    if (cursors[0] && cursors[1]) eraseCursors();
+    if(!cursors[curs]){
+        cursors[curs]= new QCPItemStraightLine(ui->grafica);
+        cursors[curs]->setPen(QPen(Qt::red, 1, Qt::DashLine));
+    }
+    cursors[curs]->point1->setCoords(ui->grafica->xAxis->pixelToCoord(event->pos().x()), ui->grafica->yAxis->range().lower);
+    cursors[curs]->point2->setCoords(ui->grafica->xAxis->pixelToCoord(event->pos().x()), ui->grafica->yAxis->range().upper);
+    curs=(curs+1)%2;
+    ui->grafica->replot();
+}
+
+void maindlg::eraseCursors(){
+    if (cursorConnection) {
+        disconnect(cursorConnection);
+        cursorConnection = QMetaObject::Connection();
+    }
+
+    for (int a=0;a<2;a++){
+        if (cursors[a]){
+            ui->grafica->removeItem(cursors[a]);
+            cursors[a]=nullptr;
+        }
+    }
+    curs=0;
+    ui->grafica->replot();
+}
+
 void maindlg::on_btnGSettings_clicked()
 {
     grOpDLG->exec();
@@ -89,3 +119,7 @@ void maindlg::on_btnStop_clicked()
     disconnect(com,&serialcom::dataReceived,this,&maindlg::handleData);
 }
 
+
+void maindlg::on_checkBox_checkStateChanged(const Qt::CheckState &arg1) {
+    if (arg1 != Qt::Checked) eraseCursors();
+}
