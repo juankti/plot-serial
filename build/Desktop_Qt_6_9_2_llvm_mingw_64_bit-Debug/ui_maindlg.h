@@ -12,12 +12,12 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
 #include "qcustomplot.h"
 
 QT_BEGIN_NAMESPACE
@@ -25,94 +25,106 @@ QT_BEGIN_NAMESPACE
 class Ui_maindlg
 {
 public:
-    QWidget *layoutWidget;
+    QGridLayout *gridLayout;
+    QHBoxLayout *horizontalLayout_5;
     QVBoxLayout *verticalLayout_2;
-    QSpacerItem *verticalSpacer;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
-    QSpacerItem *horizontalSpacer;
     QPushButton *btnPorts;
-    QSpacerItem *horizontalSpacer_2;
     QLabel *labOpenPort;
-    QSpacerItem *verticalSpacer_2;
-    QWidget *layoutWidget1;
+    QSpacerItem *verticalSpacer_3;
+    QLabel *label;
+    QHBoxLayout *horizontalLayout_4;
+    QVBoxLayout *verticalLayout_4;
+    QPushButton *btnBegin;
+    QPushButton *btnStop;
     QVBoxLayout *verticalLayout_3;
     QCustomPlot *grafica;
     QHBoxLayout *horizontalLayout;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *btnGSettings;
     QSpacerItem *horizontalSpacer_3;
-    QPushButton *btnExport;
-    QWidget *widget;
-    QVBoxLayout *verticalLayout_4;
-    QPushButton *btnBegin;
-    QPushButton *btnStop;
 
     void setupUi(QDialog *maindlg)
     {
         if (maindlg->objectName().isEmpty())
             maindlg->setObjectName("maindlg");
-        maindlg->resize(773, 367);
-        layoutWidget = new QWidget(maindlg);
-        layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(10, 10, 230, 173));
-        verticalLayout_2 = new QVBoxLayout(layoutWidget);
+        maindlg->resize(802, 372);
+        maindlg->setMinimumSize(QSize(773, 367));
+        gridLayout = new QGridLayout(maindlg);
+        gridLayout->setObjectName("gridLayout");
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName("horizontalLayout_5");
+        verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName("verticalLayout_2");
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
-
-        verticalLayout_2->addItem(verticalSpacer);
-
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName("verticalLayout");
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer);
-
-        btnPorts = new QPushButton(layoutWidget);
+        btnPorts = new QPushButton(maindlg);
         btnPorts->setObjectName("btnPorts");
         btnPorts->setAutoFillBackground(true);
 
         horizontalLayout_2->addWidget(btnPorts);
 
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer_2);
-
 
         verticalLayout->addLayout(horizontalLayout_2);
 
-        labOpenPort = new QLabel(layoutWidget);
+        labOpenPort = new QLabel(maindlg);
         labOpenPort->setObjectName("labOpenPort");
+        labOpenPort->setMinimumSize(QSize(181, 51));
 
         verticalLayout->addWidget(labOpenPort);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_3);
+
+        label = new QLabel(maindlg);
+        label->setObjectName("label");
+
+        verticalLayout->addWidget(label);
 
 
         verticalLayout_2->addLayout(verticalLayout);
 
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName("horizontalLayout_4");
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setObjectName("verticalLayout_4");
+        btnBegin = new QPushButton(maindlg);
+        btnBegin->setObjectName("btnBegin");
 
-        verticalLayout_2->addItem(verticalSpacer_2);
+        verticalLayout_4->addWidget(btnBegin);
 
-        layoutWidget1 = new QWidget(maindlg);
-        layoutWidget1->setObjectName("layoutWidget1");
-        layoutWidget1->setGeometry(QRect(258, 14, 513, 345));
-        verticalLayout_3 = new QVBoxLayout(layoutWidget1);
+        btnStop = new QPushButton(maindlg);
+        btnStop->setObjectName("btnStop");
+
+        verticalLayout_4->addWidget(btnStop);
+
+
+        horizontalLayout_4->addLayout(verticalLayout_4);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_4);
+
+
+        horizontalLayout_5->addLayout(verticalLayout_2);
+
+        verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName("verticalLayout_3");
-        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        grafica = new QCustomPlot(layoutWidget1);
+        grafica = new QCustomPlot(maindlg);
         grafica->setObjectName("grafica");
         grafica->setMinimumSize(QSize(511, 301));
         horizontalLayout = new QHBoxLayout(grafica);
         horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setSizeConstraint(QLayout::SizeConstraint::SetNoConstraint);
 
         verticalLayout_3->addWidget(grafica);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName("horizontalLayout_3");
-        btnGSettings = new QPushButton(layoutWidget1);
+        btnGSettings = new QPushButton(maindlg);
         btnGSettings->setObjectName("btnGSettings");
 
         horizontalLayout_3->addWidget(btnGSettings);
@@ -121,29 +133,14 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_3);
 
-        btnExport = new QPushButton(layoutWidget1);
-        btnExport->setObjectName("btnExport");
-
-        horizontalLayout_3->addWidget(btnExport);
-
 
         verticalLayout_3->addLayout(horizontalLayout_3);
 
-        widget = new QWidget(maindlg);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(140, 270, 82, 74));
-        verticalLayout_4 = new QVBoxLayout(widget);
-        verticalLayout_4->setObjectName("verticalLayout_4");
-        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
-        btnBegin = new QPushButton(widget);
-        btnBegin->setObjectName("btnBegin");
 
-        verticalLayout_4->addWidget(btnBegin);
+        horizontalLayout_5->addLayout(verticalLayout_3);
 
-        btnStop = new QPushButton(widget);
-        btnStop->setObjectName("btnStop");
 
-        verticalLayout_4->addWidget(btnStop);
+        gridLayout->addLayout(horizontalLayout_5, 0, 0, 1, 1);
 
 
         retranslateUi(maindlg);
@@ -156,10 +153,10 @@ public:
         maindlg->setWindowTitle(QCoreApplication::translate("maindlg", "maindlg", nullptr));
         btnPorts->setText(QCoreApplication::translate("maindlg", "Configure ports", nullptr));
         labOpenPort->setText(QString());
-        btnGSettings->setText(QCoreApplication::translate("maindlg", "Graph options", nullptr));
-        btnExport->setText(QCoreApplication::translate("maindlg", "Export data", nullptr));
+        label->setText(QString());
         btnBegin->setText(QCoreApplication::translate("maindlg", "Start", nullptr));
         btnStop->setText(QCoreApplication::translate("maindlg", "Stop", nullptr));
+        btnGSettings->setText(QCoreApplication::translate("maindlg", "Graph options", nullptr));
     } // retranslateUi
 
 };

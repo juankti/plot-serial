@@ -6,6 +6,8 @@ maindlg::maindlg(QWidget *parent)
     , ui(new Ui::maindlg)
 {
     ui->setupUi(this);
+    ui->grafica->setInteraction(QCP::iRangeDrag,true);
+    ui->grafica->setInteraction(QCP::iRangeZoom,true);
     ui->grafica->addGraph();
     ui->grafica->xAxis->setLabel("");
     ui->grafica->yAxis->setLabel("");
@@ -45,6 +47,7 @@ maindlg::~maindlg()
 void maindlg::handleData(const QByteArray& dat){
     bool ok;
     float val = dat.toFloat(&ok);
+    ui->label->setText(QString::number(timer.interval()));
     if (!ok) return;
     data.push_back(t);
     y.push_back(val);

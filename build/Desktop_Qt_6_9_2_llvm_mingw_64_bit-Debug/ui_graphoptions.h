@@ -21,14 +21,13 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_graphoptions
 {
 public:
-    QWidget *layoutWidget;
+    QGridLayout *gridLayout_3;
     QGridLayout *gridLayout;
     QGridLayout *gridLayout_2;
     QVBoxLayout *verticalLayout_11;
@@ -82,12 +81,10 @@ public:
         graphoptions->resize(433, 324);
         graphoptions->setMinimumSize(QSize(433, 324));
         graphoptions->setMaximumSize(QSize(433, 324));
-        layoutWidget = new QWidget(graphoptions);
-        layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(12, 10, 414, 308));
-        gridLayout = new QGridLayout(layoutWidget);
+        gridLayout_3 = new QGridLayout(graphoptions);
+        gridLayout_3->setObjectName("gridLayout_3");
+        gridLayout = new QGridLayout();
         gridLayout->setObjectName("gridLayout");
-        gridLayout->setContentsMargins(0, 0, 0, 0);
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setObjectName("gridLayout_2");
         verticalLayout_11 = new QVBoxLayout();
@@ -102,13 +99,13 @@ public:
         verticalLayout_2->setObjectName("verticalLayout_2");
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        label = new QLabel(layoutWidget);
+        label = new QLabel(graphoptions);
         label->setObjectName("label");
         label->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout->addWidget(label);
 
-        comboScale = new QComboBox(layoutWidget);
+        comboScale = new QComboBox(graphoptions);
         comboScale->setObjectName("comboScale");
 
         horizontalLayout->addWidget(comboScale);
@@ -118,13 +115,13 @@ public:
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName("horizontalLayout_5");
-        label_5 = new QLabel(layoutWidget);
+        label_5 = new QLabel(graphoptions);
         label_5->setObjectName("label_5");
         label_5->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_5->addWidget(label_5);
 
-        comboRange = new QComboBox(layoutWidget);
+        comboRange = new QComboBox(graphoptions);
         comboRange->setObjectName("comboRange");
 
         horizontalLayout_5->addWidget(comboRange);
@@ -139,13 +136,13 @@ public:
         horizontalLayout_8->setObjectName("horizontalLayout_8");
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        label_2 = new QLabel(layoutWidget);
+        label_2 = new QLabel(graphoptions);
         label_2->setObjectName("label_2");
         label_2->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_2->addWidget(label_2);
 
-        checkGrid = new QCheckBox(layoutWidget);
+        checkGrid = new QCheckBox(graphoptions);
         checkGrid->setObjectName("checkGrid");
         checkGrid->setMaximumSize(QSize(19, 20));
 
@@ -156,13 +153,13 @@ public:
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName("horizontalLayout_4");
-        label_4 = new QLabel(layoutWidget);
+        label_4 = new QLabel(graphoptions);
         label_4->setObjectName("label_4");
         label_4->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_4->addWidget(label_4);
 
-        checkGrid_3 = new QCheckBox(layoutWidget);
+        checkGrid_3 = new QCheckBox(graphoptions);
         checkGrid_3->setObjectName("checkGrid_3");
         checkGrid_3->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
 
@@ -188,7 +185,7 @@ public:
         verticalLayout_12->setObjectName("verticalLayout_12");
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName("verticalLayout_4");
-        label_3 = new QLabel(layoutWidget);
+        label_3 = new QLabel(graphoptions);
         label_3->setObjectName("label_3");
         label_3->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -196,13 +193,13 @@ public:
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName("horizontalLayout_6");
-        label_7 = new QLabel(layoutWidget);
+        label_7 = new QLabel(graphoptions);
         label_7->setObjectName("label_7");
         label_7->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_6->addWidget(label_7);
 
-        leTWnd = new QLineEdit(layoutWidget);
+        leTWnd = new QLineEdit(graphoptions);
         leTWnd->setObjectName("leTWnd");
         leTWnd->setMaximumSize(QSize(41, 30));
 
@@ -215,14 +212,14 @@ public:
         verticalLayout_3->setObjectName("verticalLayout_3");
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName("horizontalLayout_3");
-        label_6 = new QLabel(layoutWidget);
+        label_6 = new QLabel(graphoptions);
         label_6->setObjectName("label_6");
         label_6->setMaximumSize(QSize(70, 22));
         label_6->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_3->addWidget(label_6);
 
-        leTMin = new QLineEdit(layoutWidget);
+        leTMin = new QLineEdit(graphoptions);
         leTMin->setObjectName("leTMin");
         leTMin->setMaximumSize(QSize(41, 30));
 
@@ -233,14 +230,14 @@ public:
 
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName("horizontalLayout_7");
-        label_8 = new QLabel(layoutWidget);
+        label_8 = new QLabel(graphoptions);
         label_8->setObjectName("label_8");
         label_8->setMaximumSize(QSize(70, 22));
         label_8->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_7->addWidget(label_8);
 
-        leTMax = new QLineEdit(layoutWidget);
+        leTMax = new QLineEdit(graphoptions);
         leTMax->setObjectName("leTMax");
         leTMax->setMaximumSize(QSize(41, 30));
 
@@ -257,7 +254,7 @@ public:
 
         verticalLayout_9 = new QVBoxLayout();
         verticalLayout_9->setObjectName("verticalLayout_9");
-        label_15 = new QLabel(layoutWidget);
+        label_15 = new QLabel(graphoptions);
         label_15->setObjectName("label_15");
         label_15->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -267,14 +264,14 @@ public:
         verticalLayout_10->setObjectName("verticalLayout_10");
         horizontalLayout_13 = new QHBoxLayout();
         horizontalLayout_13->setObjectName("horizontalLayout_13");
-        label_16 = new QLabel(layoutWidget);
+        label_16 = new QLabel(graphoptions);
         label_16->setObjectName("label_16");
         label_16->setMaximumSize(QSize(70, 22));
         label_16->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_13->addWidget(label_16);
 
-        leXLab = new QLineEdit(layoutWidget);
+        leXLab = new QLineEdit(graphoptions);
         leXLab->setObjectName("leXLab");
         QSizePolicy sizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -289,14 +286,14 @@ public:
 
         horizontalLayout_14 = new QHBoxLayout();
         horizontalLayout_14->setObjectName("horizontalLayout_14");
-        label_17 = new QLabel(layoutWidget);
+        label_17 = new QLabel(graphoptions);
         label_17->setObjectName("label_17");
         label_17->setMaximumSize(QSize(70, 22));
         label_17->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_14->addWidget(label_17);
 
-        leYLab = new QLineEdit(layoutWidget);
+        leYLab = new QLineEdit(graphoptions);
         leYLab->setObjectName("leYLab");
 
         horizontalLayout_14->addWidget(leYLab);
@@ -322,7 +319,7 @@ public:
 
         horizontalLayout_16->addItem(horizontalSpacer);
 
-        btnSet = new QPushButton(layoutWidget);
+        btnSet = new QPushButton(graphoptions);
         btnSet->setObjectName("btnSet");
         btnSet->setMaximumSize(QSize(41, 32));
 
@@ -330,6 +327,9 @@ public:
 
 
         gridLayout->addLayout(horizontalLayout_16, 1, 0, 1, 1);
+
+
+        gridLayout_3->addLayout(gridLayout, 0, 0, 1, 1);
 
 
         retranslateUi(graphoptions);

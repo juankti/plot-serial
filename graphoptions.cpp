@@ -110,6 +110,7 @@ void graphoptions::on_checkGrid_3_toggled(bool checked)
 
 void graphoptions::setTWnd(double a){
     if (autoFit()){
+        setRangeVis(false);
         ui->leTWnd->setVisible(true);
         ui->label_7->setVisible(true);
         if(!ui->leTWnd->text().isEmpty()){
@@ -120,7 +121,16 @@ void graphoptions::setTWnd(double a){
 
 void graphoptions::on_comboRange_currentTextChanged(const QString &arg1)
 {
-    setRangeVis(arg1=="Custom...");
+    if (autoFit()){
+        ui->leTWnd->setVisible(autoFit());
+        ui->label_7->setVisible(autoFit());
+        setRangeVis(!autoFit());
+    } else{
+        ui->leTWnd->setVisible(autoFit());
+        ui->label_7->setVisible(autoFit());
+        setRangeVis(!autoFit());
+    }
 
 }
+
 

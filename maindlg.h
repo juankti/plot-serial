@@ -9,6 +9,7 @@
 #include "portconfig.h"
 #include "graphoptions.h"
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class maindlg;
